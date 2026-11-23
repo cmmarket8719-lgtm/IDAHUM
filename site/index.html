@@ -97,6 +97,7 @@ section.block{padding:56px 0}
 .look a:hover img{transform:scale(1.05)}
 .look .lb{position:absolute;left:14px;right:14px;bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:8px;background:rgba(255,255,255,.94);border-radius:14px;padding:12px 14px;box-shadow:0 6px 20px rgba(0,0,0,.08)}
 .look .lb b{display:block;font-size:17px;letter-spacing:-.02em}
+.look .lb .nw{font-style:normal;font-size:11px;font-weight:800;color:#fff;background:#ff5a5f;border-radius:6px;padding:2px 6px;margin-right:6px;vertical-align:2px}
 .look .lb small{display:block;font-size:12px;color:var(--sub);margin-top:2px}
 .look .lb i{font-style:normal;flex:none;font-size:11px;font-weight:700;color:#fff;background:var(--c,#4a9be0);border-radius:999px;padding:4px 9px}
 .chars{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:22px}
@@ -376,14 +377,14 @@ $("#cats").innerHTML = cats.map(c=>`<a class="cat" href="${c.u}"><div class="ic 
 
 // ④ 착용 컷
 const looks = [
-  {img:"model-1", n:"딸코미", d:"입체마스크 · 10매입", age:"4~8세", id:1253, c:"#f0708a"},
+  {img:"model-3", n:"살색토끼", d:"입체마스크 · 10매입", age:"4~8세", id:1251, c:"#f29a8a", isNew:1},
   {img:"model-7", n:"알파벳카", d:"입체마스크 · 10매입", age:"4~8세", id:1252, c:"#4a9be0"},
   {img:"model-8", n:"핑크래빗", d:"입체마스크 · 10매입", age:"1~3세", id:1254, c:"#e889b5"},
+  {img:"model-2", n:"뽀솜양", d:"입체마스크 · 10매입", age:"1~3세", id:1256, c:"#5fc0a8"},
+  {img:"model-1", n:"딸코미", d:"입체마스크 · 10매입", age:"4~8세", id:1253, c:"#f0708a"},
   {img:"model-4", n:"공뇽이", d:"입체마스크 · 10매입", age:"1~3세", id:1255, c:"#8fb86a"},
-  {img:"baby-wing", n:"뽀솜양", d:"윙타입 · 5매입", age:"0~3세", id:1257, c:"#5fc0a8"},
-  {img:"sit-1", n:"애니멀", d:"덴탈형 · 5매", age:"초등", id:1201, c:"#b58a5a"},
 ];
-$("#look").innerHTML = looks.map(m=>`<a href="${P+m.id}"><img src="img/${m.img}.jpg" alt="${m.n} 마스크를 쓴 아이" loading="lazy"><div class="lb"><div><b>${m.n}</b><small>${m.d}</small></div><i style="--c:${m.c}">${m.age}</i></div></a>`).join("");
+$("#look").innerHTML = looks.map(m=>`<a href="${P+m.id}"><img src="img/${m.img}.jpg" alt="${m.n} 마스크를 쓴 아이" loading="lazy"><div class="lb"><div><b>${m.isNew?'<em class="nw">NEW</em>':''}${m.n}</b><small>${m.d}</small></div><i style="--c:${m.c}">${m.age}</i></div></a>`).join("");
 const chars = [["살색토끼",1251],["알파벳카",1252],["딸코미",1253],["핑크래빗",1254],["공뇽이",1255],["뽀솜양",1256],["별냥이",1259],["블루베어",1260],["뽀솜양 윙타입",1257],["딸코미 윙타입",1258]];
 $("#chars").innerHTML = `<span>캐릭터로 고르기</span>` + chars.map(([n,id])=>`<a href="${P+id}">${n}</a>`).join("");
 
