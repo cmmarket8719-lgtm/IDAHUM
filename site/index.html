@@ -40,6 +40,13 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.95);backdro
 .btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;font-weight:700;font-size:16px;padding:15px 30px;border-radius:999px;transition:transform .2s}
 .btn:hover{transform:translateY(-2px)}
 .btn.line{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.collage{position:relative;height:440px}
+.collage .p{position:absolute;background:#fff;border-radius:24px;box-shadow:0 20px 50px rgba(0,0,0,.12);overflow:hidden;transition:transform .4s}
+.collage .p:hover{transform:scale(1.04) rotate(0deg)!important;z-index:5}
+.collage .p img{width:100%;height:100%;object-fit:cover}
+.c1{width:58%;aspect-ratio:1;left:0;top:6%;transform:rotate(-4deg);z-index:2}
+.c2{width:44%;aspect-ratio:1;right:2%;top:0;transform:rotate(5deg)}
+.c3{width:40%;aspect-ratio:1;right:8%;bottom:0;transform:rotate(-3deg);z-index:3}
 .shot{position:relative}
 .shot .main{border-radius:28px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.10);aspect-ratio:4/3}
 .shot .main img{width:100%;height:100%;object-fit:cover;transition:transform 6s ease}
@@ -132,6 +139,7 @@ footer .cs{font-size:22px;font-weight:800;color:var(--ink)}
   .slide{padding:24px 0 76px}
   .slide .wrap{grid-template-columns:1fr;gap:28px;min-height:0}
   .slide .copy{order:2}
+  .collage{height:300px}
   .shot .sub{left:auto;right:12px;bottom:-20px;width:28%;border-width:4px}
   .cats{grid-template-columns:repeat(3,1fr);gap:20px 8px;padding-top:36px}
   .cat .ic{width:76px;height:76px}
@@ -304,10 +312,10 @@ const $ = s => document.querySelector(s);
 // ① 메인 배너 — 카탈로그 vol.3 스튜디오 사진 (site/img/)
 const slides = [
   {bg:"linear-gradient(120deg,#fde8ec,#fff6f3)", tag:"2026 NEW", h:"새로 나온 캐릭터 마스크<br>10매입 출시", p:"토끼, 알파벳카, 딸코미, 핑크래빗, 공뇽이<br>아이가 먼저 쓰고 싶어하는 마스크", main:"flatlay-checker", sub:"model-3", go:url("rabbit")},
-  {bg:"linear-gradient(120deg,#e7eef3,#f6f9fb)", tag:"0~3세 전용", h:"우리 아기의 첫 마스크<br>윙타입 캐릭터", p:"생후 6개월 영아부터 사용 가능한 윙타입<br>선물하기 좋은 40매입 세트까지", main:"wing-box", sub:"baby-wing", go:url("wingSet")},
+  {bg:"linear-gradient(120deg,#dff6ee,#f4fbf8)", tag:"0~3세 전용", h:"우리 아기의 첫 마스크<br>윙타입 캐릭터", p:"연약한 아기 피부를 생각한 새부리형 설계<br>선물하기 좋은 40매입 세트까지", k:["wingSet","wingPo","wingDd"], go:url("wingSet")},
   {bg:"linear-gradient(120deg,#f2efea,#faf8f5)", tag:"IDAHUM TOY", h:"약국에서 사고 싶은<br>아이다움 토이", p:"아이 성장 발달을 고려한 설계<br>픽셀자석블럭, 공룡탐험대, 메탈중장비까지", main:"toy-boy", go:C+"%ED%86%A0%EC%9D%B4/96/"},
   {bg:"linear-gradient(120deg,#f1eefa,#faf9fd)", tag:"Kid's Mask", h:"매일 쓰는 데일리 마스크<br>덴탈 · 3D 컬러", p:"국내산 3겹 필터, 파스텔 컬러<br>유아부터 초등학생까지 사이즈별로", main:"sit-2", sub:"sit-3", go:url("mask3d"), portrait:1},
-  {bg:"linear-gradient(120deg,#e3f0fb,#f5faff)", tag:"Baby · Children", h:"비 오는 날엔<br>프리미엄 키즈 안전우산", p:"360° 반사띠로 어두운 날에도 눈에 잘 띄게<br>아이 손에 꼭 맞는 캐릭터 우산", main:"umbrella-kids", go:url("umDino")},
+  {bg:"linear-gradient(120deg,#ece6ff,#f8f6ff)", tag:"우리집 상비템", h:"아플 때 든든한<br>어린이 케어용품", p:"국산 실리콘 투약병과 프리미엄 해열시트<br>비 오는 날엔 캐릭터 안전우산까지", k:["med","fever","umUni"], go:url("med")},
 ];
 $("#slides").innerHTML = slides.map(s => `
   <div class="slide" style="background:${s.bg}">
@@ -318,10 +326,12 @@ $("#slides").innerHTML = slides.map(s => `
         <p>${s.p}</p>
         <a class="btn" href="${s.go}">자세히 보기 →</a>
       </div>
-      <a class="shot" href="${s.go}">
+      ${s.k ? `<div class="collage">
+        ${s.k.map((k,i)=>`<a class="p c${i+1}" href="${url(k)}"><img src="${img(k)}" alt="${products[k].n}" loading="lazy"></a>`).join("")}
+      </div>` : `<a class="shot" href="${s.go}">
         <div class="main"${s.portrait?' style="aspect-ratio:4/3"':''}><img src="img/${s.main}.jpg" alt="" ${s.portrait?'style="object-position:center 30%"':''}></div>
         ${s.sub?`<div class="sub"><img src="img/${s.sub}.jpg" alt=""></div>`:""}
-      </a>
+      </a>`}
     </div>
   </div>`).join("");
 
