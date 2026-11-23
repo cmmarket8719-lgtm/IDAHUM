@@ -7,8 +7,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
 :root{
-  --ink:#1d1d1f; --sub:#6e6e73; --line:#ececec; --bg:#fff; --soft:#f7f7f8;
-  --brand:#ff7a59; --radius:20px; --max:1280px;
+  --ink:#1d1d1f; --sub:#6e6e73; --line:#ececec; --bg:#fff; --soft:#f6f7f9;
+  --brand:#4a9be0; --brand-soft:#eaf4fd; --accent:#ff7a59; --max:1280px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;word-break:keep-all}
@@ -29,26 +29,26 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.95);backdro
 .icons svg{width:24px;height:24px}
 .menu-btn{display:none}
 
-/* 히어로 슬라이드 */
+/* 히어로 슬라이드: 스튜디오 사진이 주인공 */
 .hero{position:relative;overflow:hidden}
 .slides{display:flex;transition:transform .7s cubic-bezier(.65,0,.35,1)}
-.slide{min-width:100%;padding:56px 0 64px}
-.slide .wrap{display:grid;grid-template-columns:1fr 1.15fr;align-items:center;gap:40px;min-height:480px}
-.tag{display:inline-block;font-size:14px;font-weight:800;letter-spacing:.04em;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.8);margin-bottom:18px}
+.slide{min-width:100%;padding:48px 0 72px}
+.slide .wrap{display:grid;grid-template-columns:1fr 1.15fr;align-items:center;gap:48px;min-height:500px}
+.tag{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.06em;padding:7px 13px;border-radius:999px;background:#fff;margin-bottom:18px}
 .slide h2{font-size:clamp(30px,4.2vw,52px);line-height:1.22;font-weight:800;letter-spacing:-.02em}
 .slide p{font-size:clamp(16px,1.5vw,19px);color:#3a3a3c;margin:18px 0 30px;line-height:1.6}
 .btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;font-weight:700;font-size:16px;padding:15px 30px;border-radius:999px;transition:transform .2s}
 .btn:hover{transform:translateY(-2px)}
-.collage{position:relative;height:440px}
-.collage .p{position:absolute;background:#fff;border-radius:24px;box-shadow:0 20px 50px rgba(0,0,0,.12);overflow:hidden;transition:transform .4s}
-.collage .p:hover{transform:scale(1.04) rotate(0deg)!important;z-index:5}
-.collage .p img{width:100%;height:100%;object-fit:cover}
-.c1{width:58%;aspect-ratio:1;left:0;top:6%;transform:rotate(-4deg);z-index:2}
-.c2{width:44%;aspect-ratio:1;right:2%;top:0;transform:rotate(5deg)}
-.c3{width:40%;aspect-ratio:1;right:8%;bottom:0;transform:rotate(-3deg);z-index:3}
+.btn.line{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.shot{position:relative}
+.shot .main{border-radius:28px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.10);aspect-ratio:4/3}
+.shot .main img{width:100%;height:100%;object-fit:cover;transition:transform 6s ease}
+.slide.on .shot .main img{transform:scale(1.05)}
+.shot .sub{position:absolute;left:-36px;bottom:-28px;width:30%;aspect-ratio:1;border-radius:20px;overflow:hidden;border:6px solid #fff;box-shadow:0 16px 40px rgba(0,0,0,.14)}
+.shot .sub img{width:100%;height:100%;object-fit:cover}
 .hero-ctrl{position:absolute;left:50%;transform:translateX(-50%);bottom:22px;display:flex;align-items:center;gap:12px;width:100%;max-width:var(--max);padding:0 20px}
 .count{background:rgba(29,29,31,.55);color:#fff;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px}
-.arrow{width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.85);cursor:pointer;font-size:18px;font-weight:700}
+.arrow{width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.9);cursor:pointer;font-size:18px;font-weight:700}
 .bar{flex:1;height:3px;background:rgba(0,0,0,.1);border-radius:3px;overflow:hidden;max-width:240px}
 .bar i{display:block;height:100%;background:var(--ink);width:0}
 
@@ -58,37 +58,58 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.95);backdro
 .cat .ic{width:96px;height:96px;margin:0 auto 12px;border-radius:50%;overflow:hidden;background:var(--soft);display:grid;place-items:center;transition:transform .2s;border:3px solid transparent}
 .cat:hover .ic{transform:translateY(-4px);border-color:var(--brand)}
 .cat .ic img{width:100%;height:100%;object-fit:cover}
-.cat .ic.txt{background:linear-gradient(135deg,#ff9a7a,#ff7a59);color:#fff;font-size:22px;font-weight:900}
+.cat .ic.txt{background:linear-gradient(135deg,#7dbcf0,#4a9be0);color:#fff;font-size:22px;font-weight:900}
 
 /* 섹션 공통 */
 section.block{padding:56px 0}
 .sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:24px;gap:16px;flex-wrap:wrap}
 .sec-head h3{font-size:clamp(24px,2.6vw,32px);font-weight:800;letter-spacing:-.02em}
 .sec-head small{display:block;font-size:15px;color:var(--sub);font-weight:500;margin-top:6px}
+.eyebrow{font-size:15px;font-weight:700;color:var(--brand);letter-spacing:.02em}
 .tabs{display:flex;gap:8px;flex-wrap:wrap}
 .tabs button{border:1px solid var(--line);background:#fff;padding:10px 18px;border-radius:999px;font:inherit;font-weight:700;font-size:15px;cursor:pointer;color:var(--sub)}
 .tabs button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+
+/* 브랜드 소개 */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:32px;overflow:hidden;background:linear-gradient(180deg,#f3f9ff,#dcecfb)}
+.about .photo{min-height:460px}
+.about .photo img{width:100%;height:100%;object-fit:cover}
+.about .txt{padding:56px}
+.about h3{font-size:clamp(26px,3vw,40px);font-weight:800;line-height:1.3;letter-spacing:-.02em;margin:10px 0 16px}
+.about h3 em{font-style:normal;color:var(--brand)}
+.about p{font-size:17px;line-height:1.7;color:#3a3a3c}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}
+.stats div{background:#fff;border-radius:16px;padding:18px 20px}
+.stats b{display:block;font-size:28px;font-weight:900;color:var(--brand);letter-spacing:-.02em}
+.stats span{font-size:14px;color:var(--sub);font-weight:600}
+
+/* 착용 컷 */
+.look{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.look a{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:1;background:#e6e6e6}
+.look img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.look a:hover img{transform:scale(1.06)}
 
 /* 상품 그리드 */
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 20px}
 .card .thumb{position:relative;border-radius:16px;overflow:hidden;background:var(--soft);aspect-ratio:1}
 .card .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
 .card:hover .thumb img{transform:scale(1.05)}
-.badge{position:absolute;left:10px;top:10px;font-size:12px;font-weight:800;padding:4px 9px;border-radius:6px;background:var(--brand);color:#fff}
+.badge{position:absolute;left:10px;top:10px;font-size:12px;font-weight:800;padding:4px 9px;border-radius:6px;background:var(--accent);color:#fff}
 .badge.kc{background:#2f6fed}
 .card h4{font-size:15px;font-weight:600;line-height:1.45;margin:14px 0 6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .card .price{font-size:18px;font-weight:800}
 .more{display:block;width:max-content;margin:36px auto 0;border:1px solid var(--ink);padding:14px 40px;border-radius:999px;font-weight:700}
 
-/* 기획 배너 (제품 스토리) */
-.feature{border-radius:28px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;align-items:center;margin-bottom:24px}
-.feature .txt{padding:56px}
-.feature .en{font-size:15px;font-weight:700;opacity:.65;letter-spacing:.02em}
+/* 제품 스토리 배너 */
+.feature{border-radius:32px;overflow:hidden;display:grid;grid-template-columns:1fr 1.1fr;align-items:stretch;margin-bottom:24px}
+.feature .txt{padding:64px 56px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.feature .en{font-size:15px;font-weight:700;opacity:.6;letter-spacing:.02em}
 .feature h3{font-size:clamp(26px,3vw,40px);font-weight:800;line-height:1.25;margin:12px 0 14px;letter-spacing:-.02em}
 .feature p{font-size:17px;line-height:1.6;color:#3a3a3c;margin-bottom:26px}
-.feature .pics{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:40px}
-.feature .pics a{border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.08);aspect-ratio:1}
-.feature .pics img{width:100%;height:100%;object-fit:cover}
+.feature .pic{min-height:420px}
+.feature .pic img{width:100%;height:100%;object-fit:cover}
+.feature .pics2{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:32px}
+.feature .pics2 img{width:100%;height:100%;object-fit:cover;border-radius:18px}
 .feature.rev .txt{order:2}
 
 /* 신뢰 포인트 */
@@ -108,16 +129,21 @@ footer .cs{font-size:22px;font-weight:800;color:var(--ink)}
 @media (max-width:900px){
   .gnb{display:none}.menu-btn{display:block}
   .head{height:60px}.logo img{height:36px}
-  .slide{padding:28px 0 72px}
-  .slide .wrap{grid-template-columns:1fr;gap:8px;min-height:0}
+  .slide{padding:24px 0 76px}
+  .slide .wrap{grid-template-columns:1fr;gap:28px;min-height:0}
   .slide .copy{order:2}
-  .collage{height:300px}
+  .shot .sub{left:auto;right:12px;bottom:-20px;width:28%;border-width:4px}
   .cats{grid-template-columns:repeat(3,1fr);gap:20px 8px;padding-top:36px}
   .cat .ic{width:76px;height:76px}
+  .about{grid-template-columns:1fr}
+  .about .photo{min-height:300px}
+  .about .txt{padding:32px 24px}
+  .look{grid-template-columns:repeat(2,1fr);gap:10px}
   .grid{grid-template-columns:repeat(2,1fr);gap:24px 12px}
   .feature{grid-template-columns:1fr}
-  .feature .txt{padding:36px 24px 8px;order:1!important}
-  .feature .pics{padding:20px 24px 32px}
+  .feature .txt{padding:36px 24px 28px;order:1!important}
+  .feature .pic{min-height:280px;order:2}
+  .feature .pics2{padding:0 20px 24px}
   .trust{grid-template-columns:repeat(2,1fr)}
 }
 </style>
@@ -131,11 +157,11 @@ footer .cs{font-size:22px;font-weight:800;color:var(--ink)}
     <svg class="menu-btn" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     <a class="logo" href="https://idahum.kr/"><img src="https://ecimg.cafe24img.com/pg195b61208726017/jintkorea1/web/upload/category/logo/v2_7041b965c460666524286bef40cbff72_pXS9SsLfFg_top.jpg" alt="아이다움 IDAHUM"></a>
     <nav class="gnb">
+      <a href="#about">BRAND</a>
       <a href="https://idahum.kr/category/BEST/114/">BEST</a>
       <a href="https://idahum.kr/category/%EC%BA%90%EB%A6%AD%ED%84%B0-%EB%A7%88%EC%8A%A4%ED%81%AC/24/">마스크</a>
       <a href="https://idahum.kr/category/%ED%86%A0%EC%9D%B4/96/">토이</a>
       <a href="https://idahum.kr/category/%EC%96%B4%EB%A6%B0%EC%9D%B4-%EC%9A%A9%ED%92%88/88/">어린이용품</a>
-      <a href="#">EVENT</a>
     </nav>
     <div class="icons">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -144,7 +170,7 @@ footer .cs{font-size:22px;font-weight:800;color:var(--ink)}
   </div>
 </header>
 
-<!-- ① 메인 배너: 제품이 주인공 -->
+<!-- ① 메인 배너: 스튜디오 사진 + 제품 -->
 <section class="hero" aria-label="메인 배너">
   <div class="slides" id="slides"></div>
   <div class="hero-ctrl">
@@ -160,11 +186,42 @@ footer .cs{font-size:22px;font-weight:800;color:var(--ink)}
   <div class="cats" id="cats"></div>
 </div>
 
-<!-- ③ 상품 그리드 (탭) -->
+<!-- ③ 브랜드 소개 -->
+<section class="block" id="about">
+  <div class="wrap">
+    <div class="about">
+      <div class="photo"><img src="img/family-sky.jpg" alt="하늘 아래 아이를 안아 올리는 가족" loading="lazy"></div>
+      <div class="txt">
+        <div class="eyebrow">About IDAHUM</div>
+        <h3>웃음과 건강의 시작,<br>아이의 마음을 담은 <em>아이다움</em></h3>
+        <p>부모의 기준으로 만든 유아동 헬스케어 전문 브랜드.<br>약사님이 인정하고, 전국 약국에서 선택한 브랜드입니다.</p>
+        <div class="stats">
+          <div><b>1,000만 개</b><span>지난 5년간 판매</span></div>
+          <div><b>900곳</b><span>전국 약국 입점 (2026.3 기준)</span></div>
+          <div><b>230만 개</b><span>2025년 한 해 판매</span></div>
+          <div><b>16종</b><span>유아동 라인업</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ④ 착용 컷 -->
+<section class="block" style="padding-top:8px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Character Mask</div><h3>아이가 먼저 고르는 마스크</h3><small>캐릭터 마스크 실제 착용 컷</small></div>
+      <a class="btn line" href="https://idahum.kr/category/%EC%BA%90%EB%A6%AD%ED%84%B0-%EB%A7%88%EC%8A%A4%ED%81%AC/24/">전체 보기 →</a>
+    </div>
+    <div class="look" id="look"></div>
+  </div>
+</section>
+
+<!-- ⑤ 상품 그리드 (탭) -->
 <section class="block">
   <div class="wrap">
     <div class="sec-head">
-      <div><h3>아이다움 베스트</h3><small>엄마들이 가장 많이 찾는 제품</small></div>
+      <div><h3>아이다움 베스트</h3><small>엄마 아빠가 가장 많이 찾는 제품</small></div>
       <div class="tabs" id="tabs">
         <button class="on" data-k="best">베스트</button>
         <button data-k="mask">마스크</button>
@@ -177,17 +234,17 @@ footer .cs{font-size:22px;font-weight:800;color:var(--ink)}
   </div>
 </section>
 
-<!-- ④ 제품 스토리 배너 -->
+<!-- ⑥ 제품 스토리 배너 -->
 <section class="block" style="padding-top:8px">
   <div class="wrap" id="features"></div>
 </section>
 
-<!-- ⑤ 신뢰 포인트 -->
+<!-- ⑦ 신뢰 포인트 -->
 <section class="block" style="padding-top:8px">
   <div class="wrap">
     <div class="sec-head"><div><h3>아이다움이 지키는 약속</h3></div></div>
     <div class="trust">
-      <div><span class="e">🏭</span><b>국내산 생산</b><span>국내에서 만든 3겹 필터 마스크</span></div>
+      <div><span class="e">💊</span><b>약국 기준 품질</b><span>약사님이 인정한 어린이 위생·안전용품</span></div>
       <div><span class="e">✅</span><b>KC 인증</b><span>유아부터 어린이까지 안전 인증 완료</span></div>
       <div><span class="e">👶</span><b>연령별 사이즈</b><span>0~3세 윙타입부터 초등학생까지</span></div>
       <div><span class="e">💬</span><b>친절한 상담</b><span>평일 09:00~18:00 전화·이메일 상담</span></div>
@@ -211,6 +268,7 @@ footer .cs{font-size:22px;font-weight:800;color:var(--ink)}
 <script>
 const IMG = "https://ecimg.cafe24img.com/pg195b61208726017/jintkorea1/web/product/medium/";
 const P = "https://idahum.kr/product/detail.html?product_no=";
+const C = "https://idahum.kr/category/";
 // 상품 데이터 (idahum.kr 실제 상품, 2026-11-23 기준)
 const products = {
   rabbit:  {n:"아이다움 캐릭터 유아 어린이 마스크 new살색토끼 10매입", p:9500,  id:1251, i:"20260324/111817b4e17497a663d2bc384282edab.jpg", t:["best","mask"], b:"NEW"},
@@ -223,8 +281,8 @@ const products = {
   wingDd:  {n:"아이다움 캐릭터 영유아 마스크 딸코미 5매입 윙타입", p:4000, id:1258, i:"20260324/d57581b16e2f4d7ab3aeb7f9c07cb5df.jpg", t:["mask"]},
   kf94:    {n:"아이다움 KF94 키즈 마스크 새부리형 혼합컬러 5매입", p:3900, id:1226, i:"20260126/142e72287696d3116b82ce3930d26223.jpg", t:["best","mask"], b:"KF94", kc:1},
   kfPink:  {n:"아이다움 KF94 유아 어린이 마스크 핑크", p:9500, id:153, i:"20241209/5fa0c4716d25028b32ae8c72628e7116.jpg", t:["mask"], b:"KF94", kc:1},
-  kfYel:   {n:"아이다움 KF94 유아 어린이 마스크 옐로우", p:9500, id:154, i:"20241209/a68e9e8632d10df1528f60187530d187.jpg", t:["mask"], b:"KF94", kc:1},
   dental:  {n:"아이다움 소형 덴탈형 마스크 국내산 3겹 어린이 초등학생 파스텔 컬러 5매", p:3500, id:1203, i:"20250331/abd6c02d51c6f5e281854dce78fe0c57.jpg", t:["mask"]},
+  mask3d:  {n:"아이다움 소형 3D마스크 국내산 3겹 어린이 초등학생 마스크 라벤더 베이지 민트 보라 5매", p:3500, id:1204, i:"20250331/18c9beef44cd67aa0ed9a8531723b54a.jpg", t:["mask"]},
   pixel:   {n:"아이다움 픽셀자석블럭 1SET(8개입)", p:36000, id:1261, i:"20260521/4c44df14dfa2321af4102cb727bfba60.jpg", t:["best","toy"], b:"NEW"},
   dino:    {n:"아이다움 공룡탐험대 1SET(10종)", p:40500, id:1263, i:"20260626/ab7a99da737218683822e25772ca04d2.jpg", t:["toy"], b:"NEW"},
   truck:   {n:"아이다움 메탈중장비트럭 1SET(6종)", p:59400, id:1266, i:"20260626/8dfc2b1964242471115fbc0f5290527f.jpg", t:["toy"]},
@@ -241,16 +299,16 @@ const products = {
 const img = k => IMG + products[k].i;
 const url = k => P + products[k].id;
 const won = n => n.toLocaleString("ko-KR") + "원";
-
-// ① 메인 배너
-const slides = [
-  {bg:"linear-gradient(120deg,#ffe3e8,#fff4f0)", tag:"NEW ARRIVAL", h:"새로 나온 캐릭터 마스크<br>10매입 4종 출시", p:"토끼, 알파벳카, 딸코미, 핑크래빗<br>아이가 먼저 쓰고 싶어하는 마스크", k:["rabbit","ddal","pink"], go:"rabbit"},
-  {bg:"linear-gradient(120deg,#dff6ee,#f4fbf8)", tag:"0~3세 전용", h:"우리 아기의 첫 마스크<br>윙타입 캐릭터", p:"연약한 아기 피부를 생각한 새부리형 설계<br>선물하기 좋은 40매입 세트까지", k:["wingSet","wingPo","wingDd"], go:"wingSet"},
-  {bg:"linear-gradient(120deg,#fff3c9,#fffaf0)", tag:"TOY 신상", h:"만들고, 굴리고, 탐험하는<br>아이다움 토이", p:"픽셀자석블럭부터 공룡탐험대, 메탈중장비까지<br>상상력이 자라는 장난감", k:["pixel","dino","truck"], go:"pixel"},
-  {bg:"linear-gradient(120deg,#dceeff,#f3f8ff)", tag:"KF94 · KC인증", h:"사계절 호흡기 보호<br>KF94 키즈 마스크", p:"초소형/소형 사이즈 선택<br>유아부터 초등학생까지 꼭 맞게", k:["kf94","kfPink","kfYel"], go:"kf94"},
-  {bg:"linear-gradient(120deg,#ece6ff,#f8f6ff)", tag:"우리집 상비템", h:"아플 때 든든한<br>어린이 케어용품", p:"국산 실리콘 투약병과 프리미엄 해열시트<br>엄마 손이 바쁜 밤에도 간편하게", k:["med","fever","umUni"], go:"med"},
-];
 const $ = s => document.querySelector(s);
+
+// ① 메인 배너 — 카탈로그 vol.3 스튜디오 사진 (site/img/)
+const slides = [
+  {bg:"linear-gradient(120deg,#fde8ec,#fff6f3)", tag:"2026 NEW", h:"새로 나온 캐릭터 마스크<br>10매입 출시", p:"토끼, 알파벳카, 딸코미, 핑크래빗, 공뇽이<br>아이가 먼저 쓰고 싶어하는 마스크", main:"flatlay-checker", sub:"model-3", go:url("rabbit")},
+  {bg:"linear-gradient(120deg,#e7eef3,#f6f9fb)", tag:"0~3세 전용", h:"우리 아기의 첫 마스크<br>윙타입 캐릭터", p:"생후 6개월 영아부터 사용 가능한 윙타입<br>선물하기 좋은 40매입 세트까지", main:"wing-box", sub:"baby-wing", go:url("wingSet")},
+  {bg:"linear-gradient(120deg,#f2efea,#faf8f5)", tag:"IDAHUM TOY", h:"약국에서 사고 싶은<br>아이다움 토이", p:"아이 성장 발달을 고려한 설계<br>픽셀자석블럭, 공룡탐험대, 메탈중장비까지", main:"toy-boy", go:C+"%ED%86%A0%EC%9D%B4/96/"},
+  {bg:"linear-gradient(120deg,#f1eefa,#faf9fd)", tag:"Kid's Mask", h:"매일 쓰는 데일리 마스크<br>덴탈 · 3D 컬러", p:"국내산 3겹 필터, 파스텔 컬러<br>유아부터 초등학생까지 사이즈별로", main:"sit-2", sub:"sit-3", go:url("mask3d"), portrait:1},
+  {bg:"linear-gradient(120deg,#e3f0fb,#f5faff)", tag:"Baby · Children", h:"비 오는 날엔<br>프리미엄 키즈 안전우산", p:"360° 반사띠로 어두운 날에도 눈에 잘 띄게<br>아이 손에 꼭 맞는 캐릭터 우산", main:"umbrella-kids", go:url("umDino")},
+];
 $("#slides").innerHTML = slides.map(s => `
   <div class="slide" style="background:${s.bg}">
     <div class="wrap">
@@ -258,19 +316,21 @@ $("#slides").innerHTML = slides.map(s => `
         <span class="tag">${s.tag}</span>
         <h2>${s.h}</h2>
         <p>${s.p}</p>
-        <a class="btn" href="${url(s.go)}">자세히 보기 →</a>
+        <a class="btn" href="${s.go}">자세히 보기 →</a>
       </div>
-      <div class="collage">
-        ${s.k.map((k,i)=>`<a class="p c${i+1}" href="${url(k)}"><img src="${img(k)}" alt="${products[k].n}" loading="lazy"></a>`).join("")}
-      </div>
+      <a class="shot" href="${s.go}">
+        <div class="main"${s.portrait?' style="aspect-ratio:4/3"':''}><img src="img/${s.main}.jpg" alt="" ${s.portrait?'style="object-position:center 30%"':''}></div>
+        ${s.sub?`<div class="sub"><img src="img/${s.sub}.jpg" alt=""></div>`:""}
+      </a>
     </div>
   </div>`).join("");
 
 let cur = 0, timer;
-const DUR = 5000;
+const DUR = 5500;
 function go(n){
   cur = (n + slides.length) % slides.length;
   $("#slides").style.transform = `translateX(-${cur*100}%)`;
+  document.querySelectorAll(".slide").forEach((el,i)=>el.classList.toggle("on", i===cur));
   $("#count").textContent = `${cur+1} / ${slides.length}`;
   const bar = $("#bar"); bar.style.transition="none"; bar.style.width="0";
   requestAnimationFrame(()=>requestAnimationFrame(()=>{bar.style.transition=`width ${DUR}ms linear`;bar.style.width="100%"}));
@@ -282,19 +342,22 @@ let sx=0; $(".hero").addEventListener("touchstart",e=>sx=e.touches[0].clientX,{p
 $(".hero").addEventListener("touchend",e=>{const d=e.changedTouches[0].clientX-sx; if(Math.abs(d)>50) go(cur+(d<0?1:-1));});
 go(0);
 
-// ② 카테고리
-const C = "https://idahum.kr/category/";
+// ② 카테고리 (아이콘도 스튜디오 사진)
 const cats = [
   {n:"BEST", txt:"BEST", u:C+"BEST/114/"},
-  {n:"캐릭터 마스크", k:"rabbit", u:C+"%EC%BA%90%EB%A6%AD%ED%84%B0-%EB%A7%88%EC%8A%A4%ED%81%AC/24/"},
-  {n:"0~3세 윙타입", k:"wingPo", u:C+"%EC%9C%99%ED%83%80%EC%9E%85%EB%A7%88%EC%8A%A4%ED%81%AC/49/"},
-  {n:"KF94", k:"kf94", u:C+"%EC%BB%AC%EB%9F%AC-%EB%A7%88%EC%8A%A4%ED%81%AC/44/"},
-  {n:"토이", k:"pixel", u:C+"%ED%86%A0%EC%9D%B4/96/"},
-  {n:"어린이용품", k:"med", u:C+"%EC%96%B4%EB%A6%B0%EC%9D%B4-%EC%9A%A9%ED%92%88/88/"},
+  {n:"캐릭터 마스크", s:"img/model-1.jpg", u:C+"%EC%BA%90%EB%A6%AD%ED%84%B0-%EB%A7%88%EC%8A%A4%ED%81%AC/24/"},
+  {n:"0~3세 윙타입", s:"img/baby-wing.jpg", u:C+"%EC%9C%99%ED%83%80%EC%9E%85%EB%A7%88%EC%8A%A4%ED%81%AC/49/"},
+  {n:"KF94", s:img("kf94"), u:C+"%EC%BB%AC%EB%9F%AC-%EB%A7%88%EC%8A%A4%ED%81%AC/44/"},
+  {n:"토이", s:"img/toy-boy.jpg", u:C+"%ED%86%A0%EC%9D%B4/96/"},
+  {n:"어린이용품", s:"img/umbrella-kids.jpg", u:C+"%EC%96%B4%EB%A6%B0%EC%9D%B4-%EC%9A%A9%ED%92%88/88/"},
 ];
-$("#cats").innerHTML = cats.map(c=>`<a class="cat" href="${c.u}"><div class="ic ${c.txt?'txt':''}">${c.txt?c.txt:`<img src="${img(c.k)}" alt="">`}</div>${c.n}</a>`).join("");
+$("#cats").innerHTML = cats.map(c=>`<a class="cat" href="${c.u}"><div class="ic ${c.txt?'txt':''}">${c.txt?c.txt:`<img src="${c.s}" alt="">`}</div>${c.n}</a>`).join("");
 
-// ③ 상품 그리드
+// ④ 착용 컷
+const looks = ["model-1","model-5","model-2","model-3","model-4","model-8","model-6","model-7"];
+$("#look").innerHTML = looks.map(m=>`<a href="${C}%EC%BA%90%EB%A6%AD%ED%84%B0-%EB%A7%88%EC%8A%A4%ED%81%AC/24/"><img src="img/${m}.jpg" alt="캐릭터 마스크 착용 모습" loading="lazy"></a>`).join("");
+
+// ⑤ 상품 그리드
 function render(tab){
   const list = Object.keys(products).filter(k=>products[k].t.includes(tab)).slice(0,8);
   $("#grid").innerHTML = list.map(k=>{const x=products[k];return `
@@ -307,16 +370,16 @@ $("#tabs").onclick = e=>{const b=e.target.closest("button"); if(!b) return;
   document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("on",x===b)); render(b.dataset.k);};
 render("best");
 
-// ④ 제품 스토리 배너
-const features = [
-  {bg:"#fff0ec", en:"Made in Korea · KC Certified", h:"아이 얼굴에 꼭 맞는<br>캐릭터 마스크", p:"국내산 3겹 필터에 아이들이 좋아하는 캐릭터를 더했어요.<br>매일 쓰는 마스크가 즐거워집니다.", k:["rabbit","alpha","gong","pink"], u:C+"%EC%BA%90%EB%A6%AD%ED%84%B0-%EB%A7%88%EC%8A%A4%ED%81%AC/24/"},
-  {bg:"#fff8e1", en:"Play & Grow", h:"손으로 만지며 자라는<br>아이다움 토이", p:"자석블럭, 3D퍼즐, 풀백 바이크까지<br>집중력과 상상력을 키우는 놀이 시간.", k:["puzzle","bike","miniEq","rc"], u:C+"%ED%86%A0%EC%9D%B4/96/", rev:1},
-];
-$("#features").innerHTML = features.map(f=>`
-  <div class="feature ${f.rev?'rev':''}" style="background:${f.bg}">
-    <div class="txt"><div class="en">${f.en}</div><h3>${f.h}</h3><p>${f.p}</p><a class="btn" href="${f.u}">SHOP NOW →</a></div>
-    <div class="pics">${f.k.map(k=>`<a href="${url(k)}"><img src="${img(k)}" alt="${products[k].n}" loading="lazy"></a>`).join("")}</div>
-  </div>`).join("");
+// ⑥ 제품 스토리 배너
+$("#features").innerHTML = `
+  <div class="feature" style="background:#fff4ef">
+    <div class="txt"><div class="en">Made in Korea · KC Certified</div><h3>같이 놀아도 편안한<br>캐릭터 마스크</h3><p>국내산 3겹 필터에 아이들이 좋아하는 캐릭터를 더했어요.<br>유아용(1~3세)과 어린이용(4~8세) 사이즈로 꼭 맞게.</p><a class="btn" href="${C}%EC%BA%90%EB%A6%AD%ED%84%B0-%EB%A7%88%EC%8A%A4%ED%81%AC/24/">SHOP NOW →</a></div>
+    <div class="pic"><img src="img/kids-play.jpg" alt="마스크를 쓰고 함께 노는 아이들" loading="lazy" style="object-fit:contain;background:#fff"></div>
+  </div>
+  <div class="feature rev" style="background:#eef5fc">
+    <div class="txt"><div class="en">IDAHUM Brand Zone</div><h3>아이들이 먼저 찾는<br>약국을 만들어 드립니다</h3><p>아이다움 전용 진열장으로 같은 제품도 더 눈에 띄게.<br>전국 약국 900곳이 아이다움과 함께하고 있어요.</p><a class="btn" href="tel:0220389996">브랜드존 입점 문의 →</a></div>
+    <div class="pics2"><img src="img/store-1.jpg" alt="약국 진열 전" loading="lazy"><img src="img/store-2.jpg" alt="아이다움 브랜드존 진열 후" loading="lazy"></div>
+  </div>`;
 </script>
 </body>
 </html>
