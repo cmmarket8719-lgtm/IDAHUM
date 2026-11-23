@@ -91,10 +91,18 @@ section.block{padding:56px 0}
 .stats span{font-size:14px;color:var(--sub);font-weight:600}
 
 /* 착용 컷 */
-.look{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.look a{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:1;background:#e6e6e6}
-.look img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.look a:hover img{transform:scale(1.06)}
+.look{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.look a{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/5;background:#e6e6e6;display:block}
+.look img{width:100%;height:100%;object-fit:cover;object-position:center 25%;transition:transform .5s}
+.look a:hover img{transform:scale(1.05)}
+.look .lb{position:absolute;left:14px;right:14px;bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:8px;background:rgba(255,255,255,.94);border-radius:14px;padding:12px 14px;box-shadow:0 6px 20px rgba(0,0,0,.08)}
+.look .lb b{display:block;font-size:17px;letter-spacing:-.02em}
+.look .lb small{display:block;font-size:12px;color:var(--sub);margin-top:2px}
+.look .lb i{font-style:normal;flex:none;font-size:11px;font-weight:700;color:#fff;background:var(--c,#4a9be0);border-radius:999px;padding:4px 9px}
+.chars{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:22px}
+.chars span{font-size:13px;font-weight:700;color:var(--sub);margin-right:4px}
+.chars a{font-size:14px;font-weight:600;border:1px solid var(--line);border-radius:999px;padding:8px 14px;background:#fff;transition:.2s}
+.chars a:hover{border-color:var(--ink);background:var(--ink);color:#fff}
 
 /* 상품 그리드 */
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 20px}
@@ -147,6 +155,8 @@ footer .cs{font-size:22px;font-weight:800;color:var(--ink)}
   .about .photo{min-height:300px}
   .about .txt{padding:32px 24px}
   .look{grid-template-columns:repeat(2,1fr);gap:10px}
+  .look .lb{left:8px;right:8px;bottom:8px;padding:8px 10px;flex-direction:column;align-items:flex-start;gap:4px}
+  .look .lb b{font-size:15px}
   .grid{grid-template-columns:repeat(2,1fr);gap:24px 12px}
   .feature{grid-template-columns:1fr}
   .feature .txt{padding:36px 24px 28px;order:1!important}
@@ -218,10 +228,11 @@ footer .cs{font-size:22px;font-weight:800;color:var(--ink)}
 <section class="block" style="padding-top:8px">
   <div class="wrap">
     <div class="sec-head">
-      <div><div class="eyebrow">Character Mask</div><h3>아이가 먼저 고르는 마스크</h3><small>캐릭터 마스크 실제 착용 컷</small></div>
+      <div><div class="eyebrow">Character Mask</div><h3>아이가 먼저 고르는 마스크</h3><small>캐릭터마다 다른 친구들이 직접 써봤어요</small></div>
       <a class="btn line" href="https://idahum.kr/category/%EC%BA%90%EB%A6%AD%ED%84%B0-%EB%A7%88%EC%8A%A4%ED%81%AC/24/">전체 보기 →</a>
     </div>
     <div class="look" id="look"></div>
+    <div class="chars" id="chars"></div>
   </div>
 </section>
 
@@ -364,8 +375,17 @@ const cats = [
 $("#cats").innerHTML = cats.map(c=>`<a class="cat" href="${c.u}"><div class="ic ${c.txt?'txt':''}">${c.txt?c.txt:`<img src="${c.s}" alt="">`}</div>${c.n}</a>`).join("");
 
 // ④ 착용 컷
-const looks = ["model-1","model-5","model-2","model-3","model-4","model-8","model-6","model-7"];
-$("#look").innerHTML = looks.map(m=>`<a href="${C}%EC%BA%90%EB%A6%AD%ED%84%B0-%EB%A7%88%EC%8A%A4%ED%81%AC/24/"><img src="img/${m}.jpg" alt="캐릭터 마스크 착용 모습" loading="lazy"></a>`).join("");
+const looks = [
+  {img:"model-1", n:"딸코미", d:"입체마스크 · 10매입", age:"4~8세", id:1253, c:"#f0708a"},
+  {img:"model-7", n:"알파벳카", d:"입체마스크 · 10매입", age:"4~8세", id:1252, c:"#4a9be0"},
+  {img:"model-8", n:"핑크래빗", d:"입체마스크 · 10매입", age:"1~3세", id:1254, c:"#e889b5"},
+  {img:"model-4", n:"공뇽이", d:"입체마스크 · 10매입", age:"1~3세", id:1255, c:"#8fb86a"},
+  {img:"baby-wing", n:"뽀솜양", d:"윙타입 · 5매입", age:"0~3세", id:1257, c:"#5fc0a8"},
+  {img:"sit-1", n:"애니멀", d:"덴탈형 · 5매", age:"초등", id:1201, c:"#b58a5a"},
+];
+$("#look").innerHTML = looks.map(m=>`<a href="${P+m.id}"><img src="img/${m.img}.jpg" alt="${m.n} 마스크를 쓴 아이" loading="lazy"><div class="lb"><div><b>${m.n}</b><small>${m.d}</small></div><i style="--c:${m.c}">${m.age}</i></div></a>`).join("");
+const chars = [["살색토끼",1251],["알파벳카",1252],["딸코미",1253],["핑크래빗",1254],["공뇽이",1255],["뽀솜양",1256],["별냥이",1259],["블루베어",1260],["뽀솜양 윙타입",1257],["딸코미 윙타입",1258]];
+$("#chars").innerHTML = `<span>캐릭터로 고르기</span>` + chars.map(([n,id])=>`<a href="${P+id}">${n}</a>`).join("");
 
 // ⑤ 상품 그리드
 function render(tab){
